@@ -18,5 +18,5 @@ A 10x3 grid of test images, along with their true and predicted labels, is also 
 
 The Weights & Biases (wandb) report provides a detailed summary of the hyperparameters used, the sweep ranges, the best configuration found, performance graphs, and insights from the sweep experiments.
 
-Instructions to train the model: Use the `train()` function in `Assign2.ipynb` to run a sweep while training the model. Use the `train()` function in `Assign2A4.ipynb` to just train the model for some fixed hyperparameter configuration. 
+**Instructions to train the model:** Use the `train()` function in `Assign2.ipynb` to run a sweep while training the model. Use the `train()` function in `Assign2A4.ipynb` to just train the model for some fixed hyperparameter configuration. 
 Instructions to evaluate the model: The `train()` function gives the validation accuracy after each epoch and the test accuracy after training is completed (after 20 epochs).
