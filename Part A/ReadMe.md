@@ -2,20 +2,18 @@ Part A involves training a CNN model from scratch on the iNaturalist dataset.
 
 Part A is implemented across two files: `Assign2.ipynb` and `Assign2A4.ipynb`. `Assign2.ipynb` contains the code for Questions 1, 2, and 3. `Assign2A4.ipynb` contains the code for Question 4.
 
-We first define a CNN model as a class, making it flexible to accept different numbers of filters, filter sizes, activation functions, and dense layers. We also provide the model summary for a dummy input to verify the architecture.
+I first define a CNN model as a class, making it flexible to accept different numbers of filters, filter sizes, activation functions, and dense layers. The model summary for a dummy input to verify the architecture is also provided.
 
-Next, we load the iNaturalist dataset from the provided zip file. We use `StratifiedShuffleSplit` from `sklearn` to split the training dataset into training and validation sets, ensuring each class is equally represented in the validation set. A custom `Counter` function is also used to count the number of samples in each class within the dataloaders to verify the correctness of the split.
+Next, I loaded the iNaturalist dataset from the provided zip file. I used `StratifiedShuffleSplit` from `sklearn` to split the training dataset into training and validation sets, ensuring each class is equally represented in the validation set. A custom `Counter` function is also used to count the number of samples in each class within the dataloaders to verify the correctness of the split.
 
-Using our custom CNN architecture and the dataloaders, we train the model on the dataset. We then perform a brute-force hyperparameter sweep using a large search space with the Bayesian optimization method to identify the best configuration. However, we observed that many underperforming configurations could be eliminated early based on their initial loss/accuracy trends. To reduce unnecessary computations, we adopted two strategies to reach the best configuration in fewer experiments:
+Using our custom CNN architecture and the dataloaders, I trained the model on the dataset. I then performed a brute-force hyperparameter sweep using a large search space with the Bayesian optimization method to identify the best configuration. However, I observed that many underperforming configurations could be eliminated early based on their initial loss/accuracy trends. To reduce unnecessary computations, I adopted two strategies to reach the best configuration in fewer experiments:
 
-Search space reduction: Based on analysis of Sweep Phase 1, we reduced the search space by enabling batch normalization, fixing the activation function to ReLU, and using the momentum optimizer.
+Search space reduction: Based on analysis of Sweep Phase 1, I reduced the search space by enabling batch normalization, fixing the activation function to ReLU, and using the momentum optimizer.
 
-Early termination: We implemented early stopping for underperforming configurations by monitoring their validation accuracy trends in the initial stages.
+Early termination: I implemented early stopping for underperforming configurations by monitoring their validation accuracy trends in the initial stages.
 
-Finally, we obtained the best configuration of hyperparameters, achieving a validation accuracy of 40% after 20 epochs. We retrained the model using this best configuration, which yielded a validation accuracy of 36.75% and a test accuracy of 36.40%.
+Finally, I obtained the best configuration of hyperparameters, achieving a validation accuracy of 40% after 20 epochs. I retrained the model using this best configuration, which yielded a validation accuracy of 36.75% and a test accuracy of 36.40%.
 
-We also display a 10x3 grid of test images along with their true and predicted labels for visual inspection.
+A 10x3 grid of test images along with their true and predicted labels is also displayed.
 
 The Weights & Biases (wandb) report provides a detailed account of the hyperparameters used, their sweep ranges, the best configuration found, performance graphs, and insights gained from the sweep experiments.
-
-
