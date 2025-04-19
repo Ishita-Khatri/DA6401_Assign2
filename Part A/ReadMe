@@ -1,10 +1,10 @@
 Part A involves training a CNN model from scratch on the iNaturalist dataset.
 
-Part A is implemented across two files: Assign2.ipynb and Assign2A4.ipynb. Assign2.ipynb contains the code for Questions 1, 2, and 3. Assign2A4.ipynb contains the code for Question 4.
+Part A is implemented across two files: `Assign2.ipynb` and `Assign2A4.ipynb`. `Assign2.ipynb` contains the code for Questions 1, 2, and 3. `Assign2A4.ipynb` contains the code for Question 4.
 
 We first define a CNN model as a class, making it flexible to accept different numbers of filters, filter sizes, activation functions, and dense layers. We also provide the model summary for a dummy input to verify the architecture.
 
-Next, we load the iNaturalist dataset from the provided zip file. We use StratifiedShuffleSplit from sklearn to split the training dataset into training and validation sets, ensuring each class is equally represented in the validation set. A custom Counter function is also used to count the number of samples in each class within the dataloaders to verify the correctness of the split.
+Next, we load the iNaturalist dataset from the provided zip file. We use `StratifiedShuffleSplit` from `sklearn` to split the training dataset into training and validation sets, ensuring each class is equally represented in the validation set. A custom `Counter` function is also used to count the number of samples in each class within the dataloaders to verify the correctness of the split.
 
 Using our custom CNN architecture and the dataloaders, we train the model on the dataset. We then perform a brute-force hyperparameter sweep using a large search space with the Bayesian optimization method to identify the best configuration. However, we observed that many underperforming configurations could be eliminated early based on their initial loss/accuracy trends. To reduce unnecessary computations, we adopted two strategies to reach the best configuration in fewer experiments:
 
